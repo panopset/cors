@@ -19,7 +19,7 @@ repositories {
 }
 
 dependencies {
-	implementation 'org.springframework.boot:spring-boot-starter'
+	implementation 'org.springframework.boot:spring-boot-starter-web'
 	implementation 'org.jetbrains.kotlin:kotlin-reflect'
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
@@ -34,3 +34,10 @@ tasks.withType(KotlinCompile) {
 tasks.named('test') {
 	useJUnitPlatform()
 }
+
+// Name the final jar without the version.  
+// https://stackoverflow.com/questions/53123012/spring-boot-2-change-jar-name
+bootJar {
+    archiveFileName = "${archiveBaseName.get()}.jar"
+}
+
