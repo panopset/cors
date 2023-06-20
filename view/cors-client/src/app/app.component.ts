@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { CtlService } from './ctl.service'
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'cors-client';
+  title = 'cors-client'
+  ctlService: CtlService
+
+  constructor(@Inject(CtlService) ctlService: CtlService) {
+   this.ctlService = ctlService
+   this.ctlService.getApiResult()
+  }
 }
